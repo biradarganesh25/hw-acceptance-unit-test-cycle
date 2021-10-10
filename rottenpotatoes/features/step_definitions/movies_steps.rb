@@ -23,3 +23,20 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+
+Then /the director of "(.*)" should be "(.*)"/ do |movie, director|
+  found  = false
+  page.all(:xpath, '//table[@id="movies"]//tbody//tr').each do |tr|
+    found = true
+    if(movie == tr.all('td')[0].text)
+      actual_director = tr.all('td')[3].text
+      if director != actual_director
+        fail "For movie #{movie}, director expected: #{director}, actual is: #{actual_director}"
+      end
+    end
+  end
+
+  if found == false
+    fail "Could not find movie #{movie}"
+  end
+end
