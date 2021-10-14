@@ -19,6 +19,16 @@ module NavigationHelpers
       movie_id = Movie.where(title:$1).take.id
       return edit_movie_path(movie_id)
 
+    when /^the details page for "(.*)"$/ then
+      movie_id = Movie.where(title:$1).take.id
+      return movie_path(movie_id)
+
+    when /^the Similar Movies page for "(.*)"/ then 
+      movie_id = Movie.where(title:$1).take.id
+      return search_directors_path(movie_id)
+
+      
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

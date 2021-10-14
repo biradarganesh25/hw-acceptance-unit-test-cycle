@@ -1,0 +1,14 @@
+Aladdin:
+  id: 1
+  title: Aladdin
+  director: dir1
+
+MyHero:
+  id: 2
+  title: My hero academia
+  director: dir1
+
+Cruella:
+  id: 3
+  title: Cruella
+  director:
